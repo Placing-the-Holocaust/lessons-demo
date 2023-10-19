@@ -1,0 +1,40 @@
+.INT_SPACE { 
+    background-color: #a8a495; 
+}
+
+.SPATIAL_OBJ { 
+    background-color: #d3c2a2; 
+}
+
+.RIVER { 
+    background-color: #a49bb2; 
+}
+.ENV_FEATURES { 
+    background-color: #9ca8b8; 
+}
+
+.BUILDING { 
+    background-color: #d1a9a0; 
+}
+
+.NPIP { 
+    background-color: #aba49d; 
+}
+
+.FOREST { 
+    background-color: #b8a4a6; }
+
+.REGION {
+     background-color: #a9b2a1; }
+
+.COUNTRY { 
+    background-color: #b9c2cb; 
+}
+
+.POPULATED_PLACE { 
+    background-color: #d3cbb8; 
+}
+
+.DLF { 
+    background-color: #9fa9a3; 
+}
