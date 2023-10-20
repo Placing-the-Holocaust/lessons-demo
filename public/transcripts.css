@@ -1,22 +1,23 @@
 /* annotation for transcript text */
 
+
 .INT_SPACE { 
-    background-color: #a8a495; 
+    background-color: #a07ee9; 
 }
 
 .SPATIAL_OBJ { 
-    background-color: #d3c2a2; 
+    background-color: #ff7f08; 
 }
 
 .RIVER { 
-    background-color: #a49bb2; 
+    background-color: #0ccd42; 
 }
 .ENV_FEATURES { 
-    background-color: #9ca8b8; 
+    background-color: #b48a57; 
 }
 
 .BUILDING { 
-    background-color: #d1a9a0; 
+    background-color: #ffd337; 
 }
 
 .NPIP { 
@@ -36,7 +37,7 @@
 }
 
 .POPULATED_PLACE { 
-    background-color: #d3cbb8; 
+    background-color: #00bffb; 
 }
 
 .DLF { 
@@ -82,6 +83,18 @@ p {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--grid-gap);
+}
+
+.project-card-thumb{
+    background: grey;
+}
+
+.transcript{
+    padding: 0 15% 0 15%;
+}
+
+.transcript p{
+    padding: 20px;
 }
 
 /* */

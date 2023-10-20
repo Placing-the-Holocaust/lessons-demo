@@ -143,7 +143,7 @@ header {
   }
   
   .project-card .project-card-thumb {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 8/1;
     position: relative;
   }
   
@@ -155,7 +155,7 @@ header {
     object-fit: cover;
   }
   
-  .project-card:nth-child(7n) .project-card-thumb {
+  /*.project-card:nth-child(7n) .project-card-thumb {
     background: var(--theme-1-color);
   }
   
@@ -182,6 +182,12 @@ header {
   .project-card:nth-child(7n + 6) .project-card-thumb {
     background: var(--theme-7-color);
   }
+  */
+  
+  .project-card .project-card-thumb {
+    background: grey;
+  }
+
   
   @media (min-width: 640px) {
     .project-card-grid {
