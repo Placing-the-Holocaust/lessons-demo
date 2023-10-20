@@ -10,7 +10,7 @@ header {
   @media (min-width: 640px) {
     header {
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin-bottom: calc(4 * var(--space));
+      /* margin-bottom: calc(4 * var(--space)); */
     }
   
     .header-title {
