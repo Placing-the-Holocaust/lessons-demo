@@ -2,6 +2,108 @@
 layout: page
 ---
 
-<div class="transcript">
-    {{ content }}
+  <div class="transcript-container">
+    <div class="transcript-info">
+      <div class="transcript-metadata">
+        <div>
+          <p>Name: {{interviewee}}</p>
+          <p>RG_Number: {{rg_number}}</p>
+          <p>URL: <a class="fade" href="{{ushmm_url}}" target="_blank">{{ushmm_url}}</a></p>
+          <p>Birth Year: {{birth_year}}</p>
+          <p>Place of Birth: <span style="text-transform: capitalize;">{{place_of_birth}}</span></p>
+          <p>Country: <span style="text-transform: capitalize;">{{country}}</span></p>
+          <p>Experience Group: <span style="text-transform: capitalize;">{{experience_group}}</span></p>
+        </div>
+      </div>
+      <div class="transcript-categories">
+        <div class="category" id="category_REGION">
+          <p class="REGION">Regions</p>
+        </div>
+        <div class="category" id="category_COUNTRY">
+          <p class="COUNTRY">Countries</p>
+        </div>
+        <div class="category" id="category_POPULATED_PLACE">
+          <p class="POPULATED_PLACE">Populated Places</p>
+        </div>
+        <div class="category" id="category_ENV_FEATURES">
+          <p class="ENV_FEATURES">Environmental Features</p>
+        </div>
+        <div class="category" id="category_DLF">
+          <p class="DLF">DLFs</p>
+        </div>
+        <div class="category" id="category_BUILDING">
+          <p class="BUILDING">Buildings</p>
+        </div>
+        <div class="category" id="category_INT_SPACE">
+          <p class="INT_SPACE">Interior Spaces</p>
+        </div>
+        <div class="category" id="category_SPATIAL_OBJ">
+          <p class="SPATIAL_OBJ">Spatial Objects</p>
+        </div>
+        <div class="category" id="category_NPIP">
+          <p class="NPIP">Imaginary Places</p>
+        </div>
+      </div>
+    </div>
+    <div class="transcript-content">
+      <div class="transcript">
+        {{ content }}
+    </div>
+    </div>
   </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Object to store category occurrences and places
+const categoryData = {};
+
+// Select all spans in the transcript content
+const spans = document.querySelectorAll('.transcript-content span');
+
+// Iterate over the spans, processing only those in the desired categories
+spans.forEach(function(span) {
+    const category = span.className;
+    const place = span.textContent.trim();
+
+    if (!categoryData[category]) {
+        categoryData[category] = new Set(); // We use a Set to avoid duplicate entries
+    }
+    categoryData[category].add(place);
+});
+
+// Identify the categories you want to summarize
+const categoryDivs = document.querySelectorAll('.transcript-categories .category');
+
+// Update the categories with the collected data
+categoryDivs.forEach(div => {
+    const category = div.id.replace('category_', '');
+    const placesSet = categoryData[category];
+
+    // Get the header element. It should not be null as it's directly within each category div
+    const header = div.querySelector('p');
+
+    if (placesSet) {
+        // Create a list for the places
+        const ul = document.createElement('ul');
+        placesSet.forEach(place => {
+            const li = document.createElement('li');
+            li.textContent = place;
+            ul.appendChild(li);
+        });
+
+        // Clear existing list if there's one, but keep the header
+        const currentList = div.querySelector('ul');
+        if (currentList) {
+            div.removeChild(currentList);
+        }
+
+        // Append the count to the header text
+        header.textContent = `${header.textContent.toUpperCase()} (${placesSet.size})`;
+        // Append the list of places
+        div.appendChild(ul);
+    } else {
+        // If there is no data for this category, we handle it by setting the count to 0
+        header.textContent += ' (0)';
+    }
+});
+});
+</script>
