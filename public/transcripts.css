@@ -6,34 +6,34 @@
 }
 
 .SPATIAL_OBJ { 
-    background-color: #ff7f08; 
+    background-color: #E57DE8; 
 }
 
 .RIVER { 
     background-color: #0ccd42; 
 }
 .ENV_FEATURES { 
-    background-color: #b48a57; 
+    background-color: #0CCD42; 
 }
 
 .BUILDING { 
-    background-color: #ffd337; 
+    background-color: #FF7F08; 
 }
 
 .NPIP { 
-    background-color: #aba49d; 
+    background-color: #FA0048; 
 }
 
 .FOREST { 
-    background-color: #b8a4a6; 
+    background-color: #0CCD42; 
 }
 
 .REGION {
-     background-color: #a9b2a1; 
+     background-color: #B9C2CB; 
 }
 
 .COUNTRY { 
-    background-color: #b9c2cb; 
+    background-color: #A9B2A1; 
 }
 
 .POPULATED_PLACE { 
@@ -41,7 +41,7 @@
 }
 
 .DLF { 
-    background-color: #e509e8; 
+    background-color: #FFD337; 
 }
 
 /* text styling */
@@ -109,11 +109,22 @@ p {
 
 .landing-nav {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: var(--grid-gap);
     margin-top: var(--space);
     margin-bottom: var(--space);
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
+    height: 100px;
+}
+
+@media (max-width: 640px) {
+    .landing-nav {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: var(--grid-gap);
+        margin-top: var(--space);
+        margin-bottom: var(--space);
+    }
 }
 
 .stack {
@@ -123,6 +134,7 @@ p {
 .landing-link {
     display: grid;
     place-items: center;
+    text-align: center;
     background-color: lightgrey;
 }
 
@@ -176,5 +188,77 @@ p {
     height: 100vh;
 }
 
+.logo {
+    display: grid;
+    grid-row-start: 4;
+    grid-column-start: 6;
+    max-width: 150px;
+    place-self: end;
+}
 
+.transcript-categories p {
+    cursor: pointer;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s;
+}
+
+.transcript-categories p:hover {
+    opacity: 0.5;
+}
+
+/* Hide and show content */
+.hide-content {
+    display: none;
+}
+
+.show-content {
+    display: block;
+}
+
+.fade {
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s;
+  }
+  
+  .fade:hover {
+    opacity: 0.5;
+  }
+
+
+  .transcript-content span.REGION,
+  .transcript-content span.COUNTRY,
+  .transcript-content span.POPULATED_PLACE,
+  .transcript-content span.ENV_FEATURES,
+  .transcript-content span.DLF,
+  .transcript-content span.BUILDING,
+  .transcript-content span.INT_SPACE,
+  .transcript-content span.SPATIAL_OBJ,
+  .transcript-content span.NPIP {
+    cursor: pointer;
+  }
+
+
+/* About and Documentation */
+
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--grid-gap);
+    margin-bottom: var(--space); 
+}
+
+.about-section{
+    grid-column: 2 / span 4;
+}
+
+.about-section h2{
+    margin-bottom: var(--space);
+    margin-top: var(--space);
+}
+
+.about-section p{
+    margin-bottom: var(--space);
+}
 

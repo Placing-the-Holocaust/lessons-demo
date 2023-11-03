@@ -6,13 +6,13 @@ layout: page
     <div class="transcript-info">
       <div class="transcript-metadata">
         <div>
-          <p>Name: {{interviewee}}</p>
-          <p>RG_Number: {{rg_number}}</p>
-          <p>URL: <a class="fade" href="{{ushmm_url}}" target="_blank">{{ushmm_url}}</a></p>
-          <p>Birth Year: {{birth_year}}</p>
-          <p>Place of Birth: <span style="text-transform: capitalize;">{{place_of_birth}}</span></p>
-          <p>Country: <span style="text-transform: capitalize;">{{country}}</span></p>
-          <p>Experience Group: <span style="text-transform: capitalize;">{{experience_group}}</span></p>
+          <p><b>Name:</b> {{interviewee}}</p>
+          <p><b>RG_Number:</b> {{rg_number}}</p>
+          <p><b>URL:</b> <a class="fade" href="{{ushmm_url}}" target="_blank">{{ushmm_url}}</a></p>
+          <p><b>Birth Year:</b> {{birth_year}}</p>
+          <p><b>Place of Birth:</b> <span style="text-transform: capitalize;">{{place_of_birth}}</span></p>
+          <p><b>Country:</b> <span style="text-transform: capitalize;">{{country}}</span></p>
+          <p><b>Experience Group:</b> <span style="text-transform: capitalize;">{{experience_group}}</span></p>
         </div>
       </div>
       <div class="transcript-categories">
@@ -48,13 +48,18 @@ layout: page
     <div class="transcript-content">
       <div class="transcript">
         {{ content }}
+        <div id="tooltip" style="display:none; position:absolute; z-index:1000; padding:5px; background:white; border:1px solid black;"></div>
     </div>
     </div>
   </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    
 // Object to store category occurrences and places
 const categoryData = {};
+
+// Identify the categories you want to summarize
+const categoryDivs = document.querySelectorAll('.transcript-categories .category');
 
 // Select all spans in the transcript content
 const spans = document.querySelectorAll('.transcript-content span');
@@ -69,10 +74,7 @@ spans.forEach(function(span) {
     }
     categoryData[category].add(place);
 });
-
-// Identify the categories you want to summarize
-const categoryDivs = document.querySelectorAll('.transcript-categories .category');
-
+  
 // Update the categories with the collected data
 categoryDivs.forEach(div => {
     const category = div.id.replace('category_', '');
@@ -105,5 +107,87 @@ categoryDivs.forEach(div => {
         header.textContent += ' (0)';
     }
 });
+
+    // Select all category headers
+    const categoryHeaders = document.querySelectorAll('.transcript-categories .category p');
+
+    // Function to toggle visibility of the associated list
+    function toggleVisibility(event) {
+        const header = event.currentTarget;
+        const contentDiv = header.parentElement; // The parent 'div' of the 'p' header
+        const list = contentDiv.querySelector('ul');
+
+        if (list) {
+            list.classList.toggle('hide-content');
+            list.classList.toggle('show-content');
+        }
+    }
+
+    // Attach the click event listener to each category header
+    categoryHeaders.forEach(function(header) {
+        // Initially set the list to be shown
+        const list = header.nextElementSibling; // assuming the 'ul' is right after the 'p' element
+        if (list) {
+            list.classList.add('show-content');
+        }
+
+        // Add click event listener
+        header.addEventListener('click', toggleVisibility);
+    });
+    
+    
+    // Tooltip setup
+    const tooltip = document.createElement('div');
+    tooltip.id = 'tooltip';
+    tooltip.style.display = 'none';
+    tooltip.style.position = 'absolute';
+    tooltip.style.zIndex = '1000';
+    tooltip.style.padding = '5px';
+    tooltip.style.background = 'white';
+    tooltip.style.border = '1px solid black';
+    tooltip.style.fontFamily = 'usual'
+    document.body.appendChild(tooltip);
+
+    // Function to show the tooltip
+    function showTooltip(event) {
+        const categoryClass = event.target.className;
+        const categoryDiv = document.getElementById('category_' + categoryClass.toUpperCase());
+        if (categoryDiv) {
+            tooltip.style.display = 'block';
+            tooltip.style.left = event.pageX + 10 + 'px'; // Offset from cursor
+            tooltip.style.top = event.pageY + 10 + 'px'; // Offset from cursor
+            tooltip.textContent = categoryClass.replace(/_/g, ' '); // Replace underscores// Get the category name
+        }
+    }
+
+    // Function to hide the tooltip
+    function hideTooltip() {
+        tooltip.style.display = 'none';
+    }
+
+    // Attach event listeners for tooltips to all spans that have a class matching the categories
+    spans.forEach(function(span) {
+        // Check if the span's class matches any category
+        if (document.getElementById('category_' + span.className.toUpperCase())) {
+            span.addEventListener('mouseover', showTooltip);
+            span.addEventListener('mouseout', hideTooltip);
+        }
+    });
+});
+
+// When the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Check if the URL contains a hash
+  if(window.location.hash) {
+    // Get the element with the ID from the URL hash
+    const id = window.location.hash.substring(1);
+    const element = document.getElementById(id);
+
+    // If the element exists, apply styles or classes to it
+    if(element) {
+      element.style.backgroundColor = 'yellow'; // for highlighting
+      element.style.textDecoration = 'underline'; // for underlining
+    }
+  }
 });
 </script>
