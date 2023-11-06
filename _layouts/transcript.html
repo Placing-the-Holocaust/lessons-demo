@@ -17,31 +17,31 @@ layout: page
       </div>
       <div class="transcript-categories">
         <div class="category" id="category_REGION">
-          <p class="REGION">Regions</p>
+          <p class="category-header REGION"><span class="header-text">REGIONS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_COUNTRY">
-          <p class="COUNTRY">Countries</p>
+          <p class="category-header COUNTRY"><span class="header-text">COUNTRIES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_POPULATED_PLACE">
-          <p class="POPULATED_PLACE">Populated Places</p>
+          <p class="category-header POPULATED_PLACE"><span class="header-text">POPULATED PLACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_ENV_FEATURES">
-          <p class="ENV_FEATURES">Environmental Features</p>
+          <p class="category-header ENV_FEATURES"><span class="header-text">ENVIRONMENTAL FEATURES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_DLF">
-          <p class="DLF">Distinct Landscape Features</p>
+          <p class="category-header DLF"><span class="header-text">DISTINCT LANDSCAPE FEATURES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_BUILDING">
-          <p class="BUILDING">Buildings</p>
+          <p class="category-header BUILDING"><span class="header-text">BUILDINGS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_INT_SPACE">
-          <p class="INT_SPACE">Interior Spaces</p>
+          <p class="category-header INT_SPACE"><span class="header-text">INTERIOR SPACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_SPATIAL_OBJ">
-          <p class="SPATIAL_OBJ">Spatial Objects</p>
+          <p class="category-header SPATIAL_OBJ"><span class="header-text">SPATIAL OBJECTS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
         <div class="category" id="category_NPIP">
-          <p class="NPIP">Imaginary Places</p>
+          <p class="category-header NPIP"><span class="header-text">IMAGINARY PLACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
         </div>
       </div>
     </div>
@@ -54,88 +54,88 @@ layout: page
   </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    
-// Object to store category occurrences and places
-const categoryData = {};
+    // Object to store category occurrences and places
+    const categoryData = {};
 
-// Identify the categories you want to summarize
-const categoryDivs = document.querySelectorAll('.transcript-categories .category');
+    // Lookup object for alternate names
+    const alternateNames = {
+        'REGION': 'REGION',
+        'COUNTRY': 'COUNTRY',
+        'POPULATED_PLACE': 'POPULATED PLACE',
+        'ENV_FEATURES': 'ENVIRONMENTAL FEATURE',
+        'DLF': 'DISTINCT LANDSCAPE FEATURE',
+        'BUILDING': 'BUILDING',
+        'INT_SPACE': 'INTERIOR SPACE',
+        'SPATIAL_OBJ': 'SPATIAL OBJECT',
+        'NPIP': 'IMAGINARY PLACE'
+    };
 
-// Select all spans in the transcript content
-const spans = document.querySelectorAll('.transcript-content span');
+    // Select all spans in the transcript content
+    const spans = document.querySelectorAll('.transcript-content span');
 
-// Iterate over the spans, processing only those in the desired categories
-spans.forEach(function(span) {
-    const category = span.className;
-    const place = span.textContent.trim();
+    // Iterate over the spans, processing only those in the desired categories
+    spans.forEach(function(span) {
+        const category = span.className;
+        const place = span.textContent.trim();
 
-    if (!categoryData[category]) {
-        categoryData[category] = new Set(); // We use a Set to avoid duplicate entries
-    }
-    categoryData[category].add(place);
-});
-  
-// Update the categories with the collected data
-categoryDivs.forEach(div => {
-    const category = div.id.replace('category_', '');
-    const placesSet = categoryData[category];
-
-    // Get the header element. It should not be null as it's directly within each category div
-    const header = div.querySelector('p');
-
-    if (placesSet) {
-        // Create a list for the places
-        const ul = document.createElement('ul');
-        placesSet.forEach(place => {
-            const li = document.createElement('li');
-            li.textContent = place;
-            ul.appendChild(li);
-        });
-
-        // Clear existing list if there's one, but keep the header
-        const currentList = div.querySelector('ul');
-        if (currentList) {
-            div.removeChild(currentList);
+        if (!categoryData[category]) {
+            categoryData[category] = new Set(); // Use a Set to avoid duplicate entries
         }
+        categoryData[category].add(place);
+    });
 
-        // Append the count to the header text
-        header.textContent = `${header.textContent.toUpperCase()} (${placesSet.size})`;
-        // Append the list of places
-        div.appendChild(ul);
-    } else {
-        // If there is no data for this category, we handle it by setting the count to 0
-        header.textContent += ' (0)';
-    }
-});
+    // Identify the categories you want to summarize
+    const categoryDivs = document.querySelectorAll('.transcript-categories .category');
 
-    // Select all category headers
-    const categoryHeaders = document.querySelectorAll('.transcript-categories .category p');
+    // Update the categories with the collected data
+    categoryDivs.forEach(div => {
+        const category = div.id.replace('category_', '');
+        const placesSet = categoryData[category];
+        const header = div.querySelector('p');
+        const headerText = div.querySelector('.header-text');
+
+        if (placesSet) {
+            const ul = document.createElement('ul');
+            placesSet.forEach(place => {
+                const li = document.createElement('li');
+                li.textContent = place;
+                ul.appendChild(li);
+            });
+
+            const currentList = div.querySelector('ul');
+            if (currentList) {
+                div.removeChild(currentList);
+            }
+
+            headerText.textContent = `${headerText.textContent.toUpperCase()} (${placesSet.size})`;
+            div.appendChild(ul);
+        } else {
+            headerText.textContent += ' (0)';
+        }
+    });
 
     // Function to toggle visibility of the associated list
     function toggleVisibility(event) {
         const header = event.currentTarget;
-        const contentDiv = header.parentElement; // The parent 'div' of the 'p' header
-        const list = contentDiv.querySelector('ul');
-
-        if (list) {
-            list.classList.toggle('hide-content');
-            list.classList.toggle('show-content');
+        const list = header.nextElementSibling; // assuming the 'ul' is right after the 'p'
+        const caret = header.querySelector('.caret img'); // Get the caret image
+        list.classList.toggle('hide-content');
+        list.classList.toggle('show-content');
+        // Check if the list is visible and rotate the caret
+        if (list.classList.contains('show-content')) {
+          caret.style.transform = 'rotate(0deg)';
+        } else {
+          caret.style.transform = 'rotate(-90deg)';
         }
     }
 
-    // Attach the click event listener to each category header
-    categoryHeaders.forEach(function(header) {
-        // Initially set the list to be shown
-        const list = header.nextElementSibling; // assuming the 'ul' is right after the 'p' element
-        if (list) {
-            list.classList.add('show-content');
-        }
-
-        // Add click event listener
+    // Attach click event listener to each category header
+    categoryDivs.forEach(div => {
+        const header = div.querySelector('p');
         header.addEventListener('click', toggleVisibility);
+        header.nextElementSibling.classList.add('show-content');
     });
-    
-    
+
     // Tooltip setup
     const tooltip = document.createElement('div');
     tooltip.id = 'tooltip';
@@ -145,18 +145,17 @@ categoryDivs.forEach(div => {
     tooltip.style.padding = '5px';
     tooltip.style.background = 'white';
     tooltip.style.border = '1px solid black';
-    tooltip.style.fontFamily = 'usual'
     document.body.appendChild(tooltip);
 
-    // Function to show the tooltip
+    // Function to show the tooltip with alternate name
     function showTooltip(event) {
         const categoryClass = event.target.className;
-        const categoryDiv = document.getElementById('category_' + categoryClass.toUpperCase());
-        if (categoryDiv) {
+        const alternateName = alternateNames[categoryClass]; // Use the alternate name from the lookup object
+        if (alternateName) {
+            tooltip.textContent = alternateName;
             tooltip.style.display = 'block';
-            tooltip.style.left = event.pageX + 10 + 'px'; // Offset from cursor
-            tooltip.style.top = event.pageY + 10 + 'px'; // Offset from cursor
-            tooltip.textContent = categoryClass.replace(/_/g, ' '); // Replace underscores// Get the category name
+            tooltip.style.left = `${event.pageX + 10}px`;
+            tooltip.style.top = `${event.pageY + 10}px`;
         }
     }
 
@@ -167,27 +166,21 @@ categoryDivs.forEach(div => {
 
     // Attach event listeners for tooltips to all spans that have a class matching the categories
     spans.forEach(function(span) {
-        // Check if the span's class matches any category
-        if (document.getElementById('category_' + span.className.toUpperCase())) {
+        if (alternateNames[span.className]) {
             span.addEventListener('mouseover', showTooltip);
             span.addEventListener('mouseout', hideTooltip);
+            span.style.cursor = 'pointer';
         }
     });
-});
 
-// When the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Check if the URL contains a hash
-  if(window.location.hash) {
-    // Get the element with the ID from the URL hash
-    const id = window.location.hash.substring(1);
-    const element = document.getElementById(id);
-
-    // If the element exists, apply styles or classes to it
-    if(element) {
-      element.style.backgroundColor = 'yellow'; // for highlighting
-      element.style.textDecoration = 'underline'; // for underlining
+    // Check if the URL contains a hash for highlighting and underlining
+    if(window.location.hash) {
+        const id = window.location.hash.substring(1);
+        const element = document.getElementById(id);
+        if(element) {
+            element.style.backgroundColor = 'yellow';
+            element.style.textDecoration = 'underline';
+        }
     }
-  }
 });
 </script>

@@ -136,6 +136,7 @@ p {
     place-items: center;
     text-align: center;
     background-color: lightgrey;
+    border-radius: 10px;
 }
 
 .half {
@@ -201,10 +202,16 @@ p {
     transition-property: opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.3s;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .transcript-categories p:hover {
     opacity: 0.5;
+}
+
+.transcript-categories ul {
+    padding-left: 7.5px;
 }
 
 /* Hide and show content */
@@ -237,6 +244,22 @@ p {
   .transcript-content span.SPATIAL_OBJ,
   .transcript-content span.NPIP {
     cursor: pointer;
+    border-radius: 5px;
+    padding: 0 2.5px 0 2.5px;
+  }
+
+.about-content span.REGION,
+.about-content span.COUNTRY,
+.about-content span.POPULATED_PLACE,
+.about-content span.ENV_FEATURES,
+.about-content span.DLF,
+.about-content span.BUILDING,
+.about-content span.INT_SPACE,
+.about-content span.SPATIAL_OBJ,
+.about-content span.NPIP {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 2.5px 0 2.5px;
   }
 
 
@@ -262,3 +285,44 @@ p {
     margin-bottom: var(--space);
 }
 
+#tooltip{
+    font-family: usual;
+    border-radius: 10px;
+}
+
+.category-header {
+    display: flex;            /* Use flexbox to layout inline elements */
+    justify-content: space-between; /* Positions children at start and end */
+    align-items: center;      /* Vertically centers children */
+    padding: 0 10px;          /* Add padding on both ends of the header */
+  }
+
+  .header-text {
+    flex-grow: 1;             /* Ensures text takes up the available space pushing the caret to the end */
+  }
+
+.caret {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+    transform: rotate(90deg);
+    margin-left: auto;        /* This will push the caret to the end of the flex container */
+  }
+  
+  /* Class to be added when the content is expanded */
+  .rotate-caret {
+    transform: rotate(-90deg); /* Rotates the caret */
+  }
+
+  .stack {
+    border-radius: 10px;
+    padding: 25px 10px 25px 5px;
+  }
+
+  ul {
+    list-style: inside circle;
+    font-family: usual;
+  }
+
+  .about-content li {
+    padding: 5px;
+  }
