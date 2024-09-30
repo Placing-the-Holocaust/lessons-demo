@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ title }}</title>
+    <meta name="description" content="" />
+    <link href="https://use.typekit.net/aks0uxe.css" rel="stylesheet">
+    <link href="/base.css" rel="stylesheet" />
+    <link href="/main.css" rel="stylesheet" />
+    <link href="/transcripts.css" rel="stylesheet">
+    <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/pmtiles@3.0.6/dist/pmtiles.js"></script>
+  </head>
+  <body>
+    <header class="container">
+      <div class="header-context">
+        <div class="h2">
+          <a
+            class="fade"
+            href="/index"><h2>Placing the Holocaust</h2></a>
+        </div>
+      </div>
+      <div class="header-title">
+        <div class="h1">
+          <a class="fade" href="/"></a>
+        </div>
+      </div>
+      <div class="header-nav">
+        <div class="h2">
+          <a class="fade" href="https://umainegis.maps.arcgis.com/apps/webappviewer/index.html?id=0637d6d2d30f4291b23e53c3ddb96df5" target="_blank">Mapping Camps and Ghettos</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="https://placing-the-holocaust.streamlit.app/" target="_blank">Testimony Search</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/transcripts/">Full Transcripts</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/documentation/">Documentation</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/about">About</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      {{content}}
+    </main>
+    <script src="../scripts/map.js"></script>
+  </body>
+</html>

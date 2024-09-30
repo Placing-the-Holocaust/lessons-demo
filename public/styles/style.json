@@ -1,0 +1,94 @@
+{
+  "version": 8,
+  "name": "placing-holocaust",
+  "metadata": {
+    "maputnik:renderer": "mlgljs"
+  },
+    "sources": {
+      "european_countries": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/european_countries.pmtiles"
+      },
+      "rivers": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/major_rivers.pmtiles"
+      },
+      "major_cities": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/major_cities.pmtiles"
+      },
+      "death_camps": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/death_camps.pmtiles"
+      },
+      "ghettos": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/ghettos.pmtiles"
+      },
+      "ss_camps": {
+        "type": "vector",
+        "url": "pmtiles://https://placing-holocaust-tiles.s3.us-east-2.amazonaws.com/ss_camps.pmtiles"
+      }
+    },
+    "sprite": "https://openmaptiles.github.io/maptiler-toner-gl-style/sprite",
+    "glyphs": "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
+    "layers": [
+      {
+        "id": "background",
+        "type": "background",
+        "paint": {"background-color": "#343434 "}
+      },
+      {
+        "id": "european_countries-copy",
+        "type": "fill",
+        "source": "european_countries",
+        "source-layer": "european_countries",
+        "paint": {"fill-color": "rgba(255, 255, 255, 1)"}
+      },
+      {
+        "id": "borders",
+        "type": "line",
+        "source": "european_countries",
+        "source-layer": "european_countries",
+        "paint": {"line-width": 0.5, "line-color": "#343434 "}
+      },
+      {
+        "id": "cities",
+        "type": "symbol",
+        "source": "major_cities",
+        "source-layer": "major_cities",
+        "layout": {"text-field": ""}
+      },
+      {
+        "id": "ghettos",
+        "type": "circle",
+        "source": "ghettos",
+        "source-layer": "ghettos",
+        "paint": {
+          "circle-radius": {"stops": [[3, 2], [7, 6]]},
+          "circle-color": "#000"
+        }
+      },
+      {
+        "id": "ss_camps",
+        "type": "circle",
+        "source": "ss_camps",
+        "source-layer": "ss_camps",
+        "paint": {
+          "circle-radius": {"stops": [[3, 2], [7, 6]]},
+          "circle-color": "#000"
+        }
+      },
+      {
+        "id": "death_camps",
+        "type": "circle",
+        "source": "death_camps",
+        "source-layer": "death_camps",
+        "paint": {
+          "circle-radius": {"stops": [[3, 2], [7, 6]]},
+          "circle-color": "#E60000"
+        }
+      }
+    ],
+    "id": "c4268e48-fac9-4478-8120-201224fbd4d8"
+  }

@@ -1,0 +1,204 @@
+{
+    "variables": [
+      {
+        "id": "GhettoRegion",
+        "displayName": "Ghetto Region",
+        "question": "In what German administrative region were ghettos located?",
+        "type": "dropdown",
+        "optionsSource": "GhettoRegionOptions",
+        "dataset": ["Any"]
+      },
+      {
+        "id": "GerOcMid",
+        "displayName": "German Occupation Start Date",
+        "question": "When did German occupation begin?",
+        "type": "date",
+        "dataset": ["BA"]
+      },
+      {
+        "id": "StartMid",
+        "displayName": "Ghetto Establishment Start Date",
+        "question": "When were ghettos established?",
+        "type": "date",
+        "dataset": ["BA"]
+      },
+      {
+        "id": "EndMid",
+        "displayName": "Ghetto End Date",
+        "question": "When did ghettos cease to exist or become different kinds of sites?",
+        "type": "date",
+        "dataset": ["BA"]
+      },
+      {
+        "id": "DurMid",
+        "displayName": "Duration of Ghetto Existence",
+        "question": "How long did ghettos exist (in days)?",
+        "type": "slider",
+        "min": 1,
+        "max": 1600,
+        "step": 1,
+        "dataset": ["BA"]
+      },
+      {
+        "id": "HoldPStruc",
+        "displayName": "Holding Structures",
+        "question": "In what structures or spaces were Jews held?",
+        "type": "dropdown",
+        "optionsSource": "HoldPStrucOptions",
+        "dataset": ["PC"]
+      },
+      {
+        "id": "EnclType",
+        "displayName": "Enclosure Type",
+        "question": "How were ghettos enclosed?",
+        "type": "dropdown",
+        "optionsSource": "EnclTypeOptions",
+        "dataset": ["PC"]
+      },
+      {
+        "id": "GType",
+        "displayName": "Ghetto Definition",
+        "question": "How are ghettos defined in the Encyclopedia?",
+        "type": "dropdown",
+        "optionsSource": "GTypeOptions",
+        "dataset": ["PC"]
+      },
+      {
+        "id": "GPopMax",
+        "displayName": "Maximum Ghetto Population",
+        "question": "What was the maximum known ghetto population?",
+        "type": "dropdown",
+        "optionsSource": "GPopMaxOptions",
+        "dataset": ["PC"]
+      },
+      {
+        "id": "NonLocalJews",
+        "displayName": "Non-Local Jews Forced",
+        "question": "To which ghettos were non-local Jews forced to go?",
+        "type": "dropdown",
+        "options": ["All", "Yes", "Unknown"],
+        "dataset": ["BA", "PC"]
+      },
+      {
+        "id": "Epidemics",
+        "displayName": "Epidemic Diseases",
+        "question": "What epidemic disease(s) occurred?",
+        "type": "dropdown",
+        "optionsSource": "EpidemicsOptions",
+        "dataset": ["BA"]
+      },
+      {
+        "id": "Judenrat",
+        "displayName": "Judenrat Presence",
+        "question": "Was there a Judenrat (Jewish Council)?",
+        "type": "dropdown",
+        "options": ["All", "Yes", "No"],
+        "dataset": ["BA"]
+      },
+      {
+        "id": "RestrType",
+        "displayName": "Restriction Types",
+        "question": "What restrictions were imposed on Jews?",
+        "type": "dropdown",
+        "optionsSource": "RestrTypeOptions",
+        "dataset": ["PC"]
+      },
+      {
+        "id": "LaborType",
+        "displayName": "Types of Forced Labor",
+        "question": "What types of work were Jews forced to do?",
+        "type": "dropdown",
+        "optionsSource": "LaborTypeOptions",
+        "dataset": ["PC"],
+        "hoverDefinitions": true
+      },
+      {
+        "id": "EventNo",
+        "displayName": "Mass Removal Events",
+        "question": "How many times were 100 or more Jews removed from the ghetto?",
+        "type": "number",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "Action",
+        "displayName": "Removal Action Result",
+        "question": "What was the result of removal(s)?",
+        "type": "dropdown",
+        "optionsSource": "ActionOptions",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "NumberOfActions",
+        "displayName": "Number of Action Types",
+        "question": "How many times did each kind of result occur?",
+        "type": "number",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "PlaceName",
+        "displayName": "Frequent Destination Names",
+        "question": "What were the most frequent destinations outside the ghetto settlement?",
+        "type": "dropdown",
+        "optionsSource": "PlaceNameOptions",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "DeathCampName",
+        "displayName": "Death Camp Names",
+        "question": "To which death camp(s) were people sent?",
+        "type": "dropdown",
+        "optionsSource": "DeathCampNameOptions",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "Site",
+        "displayName": "Site Type",
+        "question": "To what kind of site(s) were people sent?",
+        "type": "dropdown",
+        "optionsSource": "SiteOptions",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "FirstRemovalEvent",
+        "displayName": "First Removal Event Date",
+        "question": "When was the first removal event?",
+        "type": "date",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "LastRemovalEvent",
+        "displayName": "Last Removal Event Date",
+        "question": "When was the last removal event?",
+        "type": "date",
+        "dataset": ["MRE"]
+      },
+      {
+        "id": "VicNum",
+        "displayName": "Total Jews Removed",
+        "question": "Where known, how many Jews in total were removed?",
+        "type": "slider",
+        "min": 0,
+        "max": 10000,
+        "step": 1,
+        "dataset": ["MRE"],
+        "notes": true,
+        "hoverText": true
+      }
+  
+    ],
+  
+    "options": {
+      "GhettoRegionOptions": ["Region1", "Region2", "Region3"],
+      "HoldPStrucOptions": ["Structure1", "Structure2", "Structure3"],
+      "EnclTypeOptions": ["Enclosure1", "Enclosure2", "Enclosure3"],
+      "GTypeOptions": ["Definition1", "Definition2", "Definition3"],
+      "GPopMaxOptions": ["<500", "500-1000", "1000-2000", "2000+"],
+      "EpidemicsOptions": ["Disease1", "Disease2", "Disease3"],
+      "RestrTypeOptions": ["Restriction1", "Restriction2", "Restriction3"],
+      "LaborTypeOptions": ["Labor1", "Labor2", "Labor3"],
+      "ActionOptions": ["Result1", "Result2", "Result3"],
+      "PlaceNameOptions": ["Destination1", "Destination2", "Destination3"],
+      "DeathCampNameOptions": ["Camp1", "Camp2", "Camp3"],
+      "SiteOptions": ["Site1", "Site2", "Site3"]
+    }
+  }

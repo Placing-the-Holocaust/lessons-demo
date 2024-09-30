@@ -227,3 +227,102 @@ header {
   .home {
     grid-column: 2 / span 3;
   }
+
+  #map-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+      /* Styling for the Data Selection Menu */
+      #data-selection-menu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px;
+        border-radius: 8px;
+        max-width: 350px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        overflow-y: auto;
+        max-height: 90vh;
+        z-index: 1; /* Ensure it stays above the map */
+      }
+      #data-selection-menu h3 {
+        margin-top: 0;
+      }
+      .input-group {
+        margin-bottom: 20px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .input-group select,
+      .input-group input[type="date"],
+      .input-group input[type="number"],
+      .input-group input[type="range"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .input-group .slider-value {
+        text-align: right;
+        font-size: 0.9em;
+        color: #555;
+      }
+  
+      /* Styling for the Info Panel */
+      #info-panel {
+        position: relative;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px;
+        border-radius: 8px;
+        max-width: 450px;
+        overflow-y: auto;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        display: none; /* Hidden by default */
+        z-index: 1;
+      }
+      #info-panel pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+  
+      /* Optional: Styling for hover definitions */
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+  
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: #555;
+        color: #fff;
+        text-align: left;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 2;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 0.8em;
+      }
+  
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
