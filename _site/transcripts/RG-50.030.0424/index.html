@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <meta name="description" content="" />
+    <link href="https://use.typekit.net/aks0uxe.css" rel="stylesheet">
+    <link href="/base.css" rel="stylesheet" />
+    <link href="/main.css" rel="stylesheet" />
+    <link href="/transcripts.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="container">
+      <div class="header-context">
+        <div class="h2">
+          <a
+            class="fade"
+            href="/index"><h2>Placing the Holocaust</h2></a>
+        </div>
+      </div>
+      <div class="header-title">
+        <div class="h1">
+          <a class="fade" href="/"></a>
+        </div>
+      </div>
+      <div class="header-nav">
+        <div class="h2">
+          <a class="fade" href="https://umainegis.maps.arcgis.com/apps/webappviewer/index.html?id=0637d6d2d30f4291b23e53c3ddb96df5" target="_blank">Mapping Camps and Ghettos</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="https://placing-the-holocaust.streamlit.app/" target="_blank">Testimony Search</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/transcripts/">Full Transcripts</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/documentation/">Documentation</a>
+        </div>
+        <div class="h2">
+          <a class="fade" href="/about">About</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      
+  <div class="transcript-container">
+    <div class="transcript-info">
+      <div class="transcript-metadata">
+        <div>
+          <p><b>Name:</b> Jack Baum</p>
+          <p><b>RG_Number:</b> rg-50.030.0424</p>
+          <p><b>URL:</b> <a class="fade" href="https://collections.ushmm.org/search/catalog/irn504889" target="_blank">https://collections.ushmm.org/search/catalog/irn504889</a></p>
+          <p><b>Birth Year:</b> 1918</p>
+          <p><b>Place of Birth:</b> <span style="text-transform: capitalize;">warsaw</span></p>
+          <p><b>Country:</b> <span style="text-transform: capitalize;">poland</span></p>
+          <p><b>Experience Group:</b> <span style="text-transform: capitalize;">survivor</span></p>
+        </div>
+      </div>
+      <div class="transcript-categories">
+        <div class="category" id="category_REGION">
+          <p class="category-header REGION"><span class="header-text">REGIONS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_COUNTRY">
+          <p class="category-header COUNTRY"><span class="header-text">COUNTRIES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_POPULATED_PLACE">
+          <p class="category-header POPULATED_PLACE"><span class="header-text">POPULATED PLACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_ENV_FEATURES">
+          <p class="category-header ENV_FEATURES"><span class="header-text">ENVIRONMENTAL FEATURES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_DLF">
+          <p class="category-header DLF"><span class="header-text">DISTINCT LANDSCAPE FEATURES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_BUILDING">
+          <p class="category-header BUILDING"><span class="header-text">BUILDINGS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_INT_SPACE">
+          <p class="category-header INT_SPACE"><span class="header-text">INTERIOR SPACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_SPATIAL_OBJ">
+          <p class="category-header SPATIAL_OBJ"><span class="header-text">SPATIAL OBJECTS</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+        <div class="category" id="category_NPIP">
+          <p class="category-header NPIP"><span class="header-text">IMAGINARY PLACES</span><span class="caret"><img src="/media/caret_right.svg" alt="Caret"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class="transcript-content">
+      <div class="transcript">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG-50.030.0424</title>
+</head>
+<body>
+    
+<p><span class="sentence" id="0">ANSWER: None
+ANSWER: None</span>
+</body>
+</html>
+    
+        <div id="tooltip" style="display:none; position:absolute; z-index:1000; padding:5px; background:white; border:1px solid black;"></div>
+    </div>
+    </div>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Object to store category occurrences and places
+    const categoryData = {};
+
+    // Lookup object for alternate names
+    const alternateNames = {
+        'REGION': 'REGION',
+        'COUNTRY': 'COUNTRY',
+        'POPULATED_PLACE': 'POPULATED PLACE',
+        'ENV_FEATURES': 'ENVIRONMENTAL FEATURE',
+        'DLF': 'DISTINCT LANDSCAPE FEATURE',
+        'BUILDING': 'BUILDING',
+        'INT_SPACE': 'INTERIOR SPACE',
+        'SPATIAL_OBJ': 'SPATIAL OBJECT',
+        'NPIP': 'IMAGINARY PLACE'
+    };
+
+    // Select all spans in the transcript content
+    const spans = document.querySelectorAll('.transcript-content span');
+
+    // Iterate over the spans, processing only those in the desired categories
+    spans.forEach(function(span) {
+        const category = span.className;
+        const place = span.textContent.trim();
+
+        if (!categoryData[category]) {
+            categoryData[category] = new Set(); // Use a Set to avoid duplicate entries
+        }
+        categoryData[category].add(place);
+    });
+
+    // Identify the categories you want to summarize
+    const categoryDivs = document.querySelectorAll('.transcript-categories .category');
+
+    // Update the categories with the collected data
+    categoryDivs.forEach(div => {
+        const category = div.id.replace('category_', '');
+        const placesSet = categoryData[category];
+        const header = div.querySelector('p');
+        const headerText = div.querySelector('.header-text');
+
+        if (placesSet) {
+            const ul = document.createElement('ul');
+            placesSet.forEach(place => {
+                const li = document.createElement('li');
+                li.textContent = place;
+                ul.appendChild(li);
+            });
+
+            const currentList = div.querySelector('ul');
+            if (currentList) {
+                div.removeChild(currentList);
+            }
+
+            headerText.textContent = `${headerText.textContent.toUpperCase()} (${placesSet.size})`;
+            div.appendChild(ul);
+        } else {
+            headerText.textContent += ' (0)';
+        }
+    });
+
+    // Function to toggle visibility of the associated list
+    function toggleVisibility(event) {
+        const header = event.currentTarget;
+        const list = header.nextElementSibling; // assuming the 'ul' is right after the 'p'
+        const caret = header.querySelector('.caret img'); // Get the caret image
+        list.classList.toggle('hide-content');
+        list.classList.toggle('show-content');
+        // Check if the list is visible and rotate the caret
+        if (list.classList.contains('show-content')) {
+          caret.style.transform = 'rotate(0deg)';
+        } else {
+          caret.style.transform = 'rotate(-90deg)';
+        }
+    }
+
+    // Attach click event listener to each category header
+    categoryDivs.forEach(div => {
+        const header = div.querySelector('p');
+        header.addEventListener('click', toggleVisibility);
+        header.nextElementSibling.classList.add('show-content');
+    });
+
+    // Tooltip setup
+    const tooltip = document.createElement('div');
+    tooltip.id = 'tooltip';
+    tooltip.style.display = 'none';
+    tooltip.style.position = 'absolute';
+    tooltip.style.zIndex = '1000';
+    tooltip.style.padding = '5px';
+    tooltip.style.background = 'white';
+    tooltip.style.border = '1px solid black';
+    document.body.appendChild(tooltip);
+
+    // Function to show the tooltip with alternate name
+    function showTooltip(event) {
+        const categoryClass = event.target.className;
+        const alternateName = alternateNames[categoryClass]; // Use the alternate name from the lookup object
+        if (alternateName) {
+            tooltip.textContent = alternateName;
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${event.pageX + 10}px`;
+            tooltip.style.top = `${event.pageY + 10}px`;
+        }
+    }
+
+    // Function to hide the tooltip
+    function hideTooltip() {
+        tooltip.style.display = 'none';
+    }
+
+    // Attach event listeners for tooltips to all spans that have a class matching the categories
+    spans.forEach(function(span) {
+        if (alternateNames[span.className]) {
+            span.addEventListener('mouseover', showTooltip);
+            span.addEventListener('mouseout', hideTooltip);
+            span.style.cursor = 'pointer';
+        }
+    });
+
+    // Check if the URL contains a hash for highlighting and underlining
+    if(window.location.hash) {
+        const id = window.location.hash.substring(1);
+        const element = document.getElementById(id);
+        if(element) {
+            element.style.backgroundColor = 'yellow';
+            element.style.textDecoration = 'underline';
+        }
+    }
+});
+</script>
+    </main>
+  </body>
+</html>
